@@ -243,7 +243,7 @@
                                                             style="font-size: 15px;">{{todo.date_time}}</span></div>
                                                 </div>
 
-                                                {% if todo.finished %}<!-- eger trudursa bura girecek cunki if hemise true olanda isleyir eger true gelibse cevur false ele ele bilki qarsiligli deyisliklik gedir finishedlarda -->
+                                                {% if todo.finished %}
                                                 <div class="widget-content-right"> 
                                                     <button class="border-0 btn-transition btn">
                                                         <a href="{% url 'yesfinish' todo.id %}" style="color:#273c75" class="border-0 btn-transition btn btn-outline-info"><i class="fa fa-close bagla"></i></a>
@@ -306,10 +306,10 @@
     
     $(document).ready(function() {
         $('input[type="checkbox"]').click(function() {
-            if($(this).is(':checked') == true){//eger secilibse if onsuz hemise true olanda isleyir
+            if($(this).is(':checked') == true){
                 $('.deletebtn').removeClass('disabled')
             }
-            else if($(this).is(':not(:checked')){//eger secili deyilse not checkked yeni disabled classini elave ele
+            else if($(this).is(':not(:checked')){
                 $('.deletebtn').addClass('disabled')
             }
         })

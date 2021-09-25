@@ -13,7 +13,7 @@
 {% include "navbar.html"%}
 
 
-{% if messages %}<!--eger mesaj varsa for ile donub hemin mesajlari yazdirag birinci mesajlarda if ile gir sonra for yaz qayda beledir-->   
+{% if messages %}
     {% for message in messages %}
     <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
         <strong>{{message}}</strong>
@@ -38,7 +38,7 @@
                     <form action="{% url 'login' %}" method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="ad">Adiniz</label><!-- labelin for u ile inputun id si mutleq biri birine beraber olmalidir -->
+                            <label for="ad">Adiniz</label>
                             <input type="text" id="ad" name="username" class="form-control" required>
                         </div>
 
@@ -46,7 +46,7 @@
                             <label for="sifre">Sifreniz</label>
                             <input type="password" name="password" id="sifre" class="form-control" required>
                         </div>
-                        <!-- eger buton form icinde yazilibsa onda bu butonun typi mutleq submit olmalidir cunki data gonderirik nama deyiskeni vasitesile bu gondermek isindede butonun typi mutleq ve mutleq submit olmalidir-->
+                        
                         <button type="submit" class="btn btn-danger btn-block text-white font-weight-bold lead" style="background-color: #636e72 !important;border: none !important;">Login</button>
                     </form>
                 </div>
