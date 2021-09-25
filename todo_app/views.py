@@ -7,7 +7,7 @@ from .forms import *
 from .models import  *
 
 # Create your views here.
-@login_required(login_url='login')#burdaki login url deki name='logindir'
+#@login_required(login_url='login')#burdaki login url deki name='logindir'
 def index(request):
     todos = ToDo.objects.filter(profile__user = request.user).all()#yeni giris eden istifadecinin ToDo larini cek
     
