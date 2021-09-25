@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #dfe6e9 ;" >
+    <a class="navbar-brand" href="{% url 'index' %}">ToDo App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <style>
+        .backcolor{
+            transition: background-color 0.3s;
+        }
+
+        .backcolor:hover{
+            background-color: #636e72 !important;
+            color: #fff;
+            font-size: normal;
+        }
+    </style>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">    
+                <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% if request.user.is_authenticated %}<!-- Eger istifadeci giris edibse sayta gelsin if islesin bir seyide yadda saxlaki if hemise True olanda isleyir false olarsa else hemise 2 ci planda gozleyir -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create' %}">ToDo Yarat</a>
+                </li>
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hesab
+                        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item backcolor" href="{% url 'cixis' %}">Cixis</a>
+                    </div>
+                </li>
+
+            {% else %}<!-- eger giris etmeyibse istifadeci sayta yeni not is_authecticated -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hesab
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'login' %}"></a>
+                        <a class="dropdown-item" href="{% url 'register' %}">Qeydiyyat</a>
+                    </div>
+                </li>
+            {% endif %}
+
+        </ul>
+            <div>
+                <ul class="navbar-nav"><!-- navbar-nav yeni navbardaki itemlar -->
+                    {% if request.user.is_authecticated %}<!-- eger istifadeci giris edibse  -->
+                        <li class="nav-link"><a class="font-weight-bold" href="{% url 'cixis' %}" style="text-decoration: underline;">Cixis</a></li>
+                    {% else %}
+                        <li class="nav-link"><a class="font-weight-bold" href="{% url 'login' %}" style="text-decoration:underline">Giris</a></li>
+                        <li class="nav-link"><a class="font-weight-bold" href="{% url 'register' %}" style="text-decoration:underline">Qeydiyyat</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+    </div>
+</nav>

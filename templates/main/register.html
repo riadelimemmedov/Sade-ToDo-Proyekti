@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Qeydiyyat</title>
+</head>
+{% include "navbar.html"%}
+
+
+{% if messages %}<!--eger mesaj varsa for ile donub hemin mesajlari yazdirag birinci mesajlarda if ile gir sonra for yaz qayda beledir-->   
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+{% endif %}
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                
+                <div class="card-header text-white border-50 text-center" style="background-color: #34495e;outline: none;">
+                    <h4 class="card-title">Register</h4>
+                </div>
+
+                <div class="card-body">
+                    <form action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="ad">Adiniz</label><!-- labelin for u ile inputun id si mutleq biri birine beraber olmalidir -->
+                            <input type="text" id="ad" name="username" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label for="sifre">Sifreniz</label>
+                            <input type="password" id="sifre" name="password"  class="form-control" required>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label for="resifre">Sifreniz Tekrar</label>
+                            <input type="password" id="resifre" name="sifretekrar" class="form-control" required>
+                        </div>
+                        <!-- eger buton form icinde yazilibsa onda bu butonun typi mutleq submit olmalidir cunki data gonderirik nama deyiskeni vasitesile bu gondermek isindede butonun typi mutleq ve mutleq submit olmalidir-->
+                        <button type="submit" class="btn btn-danger btn-block text-white font-weight-bold lead" style="background-color: #636e72 !important;border: none !important;">Testiq</button>
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    <p class="card-text font-weight-bold">Hesabiniz Var ?
+                        <a href="{% url 'login' %}" class="card-link" style="text-decoration: underline;">Giris Edin</a>
+                    </p>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>

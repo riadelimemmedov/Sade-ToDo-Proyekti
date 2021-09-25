@@ -1,0 +1,1 @@
+web: gunicorn facex.wsgi --log-file -
