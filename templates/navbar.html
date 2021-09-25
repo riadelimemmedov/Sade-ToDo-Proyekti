@@ -51,7 +51,7 @@
         </ul>
             <div>
                 <ul class="navbar-nav"><!-- navbar-nav yeni navbardaki itemlar -->
-                    {% if request.user.is_authecticated %}<!-- eger istifadeci giris edibse  -->
+                    {% if request.user.is_authenticated %}<!-- eger istifadeci giris edibse  -->
                         <li class="nav-link"><a class="font-weight-bold" href="{% url 'cixis' %}" style="text-decoration: underline;">Cixis</a></li>
                     {% else %}
                         <li class="nav-link"><a class="font-weight-bold" href="{% url 'login' %}" style="text-decoration:underline">Giris</a></li>
